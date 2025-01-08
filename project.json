@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "save": {
+      "type": "executable",
+      "sources": [
+          "main.c3",
+          "token.c3",
+          "state.c3",
+          "cache.c3",
+      ],
+    },
+  }
+}
+
