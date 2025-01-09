@@ -5,7 +5,7 @@
 !.gitignore
 !.gitattributes
 !*.c3
-!project.json
+!*.json
 !*.c
 !*.png
 !README.md
