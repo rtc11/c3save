@@ -5,6 +5,7 @@
       "sources": [
           "src/main.c3",
           "src/cache.c3",
+          "src/log.c3",
           "src/github/workflows.c3",
           "src/github/token.c3",
       ],

@@ -1,5 +1,6 @@
 module cache(<Data>);
 import std::io;
+import log;
 
 def Load = fn Data(String, Allocator);
 def Free = fn void(Data*);
@@ -31,8 +32,7 @@ macro Cache.save(Cache* self)
     @pool()
     {
         if (!self.dirty) return; 
-        io::printfn("INFO: saving %s", self.filename);
-        io::printfn("INFO: %s", self.data);
+        log::random("saving %s", self.filename);
         file::save(self.filename, string::tformat("%s", self.data))!!;
         self.dirty = false;
     };

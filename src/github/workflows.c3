@@ -1,5 +1,6 @@
 module github::action;
 import std::io;
+import log;
 import std::math;
 import std::encoding::json;
 import std::collections::object;
@@ -42,14 +43,14 @@ fn Workflows load(String filename, Allocator allocator)
     Workflows workflows = new(allocator: allocator);
     String! content = (String)file::load_new(filename, allocator);
     if (catch err = content) {
-        io::printfn("INFO: creating %s", filename);
+        log::random("creating %s", filename);
         file::save(filename, "")!!;
         return workflows;
     } 
 
-    io::printfn("INFO: loading %s", filename);
+    log::random("loading %s", filename);
     if (content.len == 0) {
-        io::printfn("INFO: empty file, initializing");
+        log::random("empty file, initializing");
         return workflows;
     }
 
@@ -85,7 +86,7 @@ fn void Workflows.add(&self, Workflow w)
 
 fn void Workflows.free(&self)
 {
-    io::printfn("INFO: free workflows");
+    log::random("free workflows");
     if(!self) return;
 	WorkflowsImpl* workflows = (WorkflowsImpl*)*self;
     workflows.workflows = {};
@@ -95,7 +96,7 @@ fn void Workflows.free(&self)
 
 fn void WorkflowsImpl._resize(&self) @private
 {
-    io::printfn("INFO: resize workflows");
+    log::random("resize workflows");
     Workflow*[] old_wfs = self.workflows; 
     uint old_capacity = old_wfs.len;
     uint new_capacity = old_capacity * 2;

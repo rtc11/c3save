@@ -3,6 +3,7 @@ import std::collections::object;
 import std::encoding::json;
 import std::io;
 import std::time;
+import log;
 
 distinct Token = void *;
 def Exp = long;
@@ -22,14 +23,14 @@ fn Token load(String filename, Allocator allocator = allocator::heap())
     Token token = new(allocator: allocator);
     String! content = (String) file::load_new(filename, allocator);
     if (catch err = content) {
-        io::printfn("INFO: creating %s", filename);
+        log::random("creating %s", filename);
         file::save(filename, "")!!;
         return token;
     }
 
-    io::printfn("INFO: loading %s", filename);
+    log::random("loading %s", filename);
     if (content.len == 0) {
-        io::printfn("INFO: empty file, initializing");
+        log::random("empty file, initializing");
         return token;
     }
 
@@ -66,7 +67,7 @@ fn void Token.update(&self, String access_token, String[] scopes, Exp exp_in, Da
 
 fn void Token.free(&self)
 {
-    io::printfn("INFO: free token");
+    log::random("free token");
     if (!self) return;
     TokenImpl* token = (TokenImpl*) *self;
     allocator::free(token.allocator, token);
