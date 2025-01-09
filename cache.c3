@@ -2,6 +2,7 @@ module cache(<Data>);
 import std::io;
 
 def Load = fn Data(String, Allocator);
+def Free = fn void(Data*);
 
 struct Cache (Printable) {
     String filename;
@@ -17,10 +18,12 @@ macro Cache(<Data>) new(String filename, Load load, Allocator allocator = alloca
    };
 }
 
+macro Cache.free(Cache* self, Free free) => free(&self.data);
+
 macro Cache.call_data(Cache* self, $FnType, void* function, ...)
 {
     self.dirty = true;
-    (($FnType) function)(&self.data, $vasplat);
+    return (($FnType) function)(&self.data, $vasplat);
 }
 
 macro Cache.save(Cache* self)

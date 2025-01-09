@@ -85,6 +85,7 @@ fn void State.add(&self, Workflow w)
 
 fn void State.free(&self)
 {
+    io::printfn("INFO: free state");
     if(!self) return;
 	StateImpl* state = (StateImpl*)*self;
     state.workflows = {};
@@ -94,6 +95,7 @@ fn void State.free(&self)
 
 fn void StateImpl._resize(&self) @private
 {
+    io::printfn("INFO: resize state");
     Workflow*[] old_wfs = self.workflows; 
     uint old_capacity = old_wfs.len;
     uint new_capacity = old_capacity * 2;
