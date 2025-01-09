@@ -3,10 +3,10 @@
     "save": {
       "type": "executable",
       "sources": [
-          "main.c3",
-          "token.c3",
-          "state.c3",
-          "cache.c3",
+          "src/main.c3",
+          "src/cache.c3",
+          "src/github/action.c3",
+          "src/github/token.c3",
       ],
     },
   }

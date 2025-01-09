@@ -1,0 +1,33 @@
+{
+    "workflows": [
+    {
+        "id" : 1,
+        "name": "a",
+        "event": "e1",
+        "commit": "123",
+        "img": "img.png",
+        "state": "ok",
+        "build_at": "2025-01-01T00:00:00",
+        "duration": "234"
+    }, 
+    {
+        "id" : 2,
+        "name": "b",
+        "event": "e2",
+        "commit": "456",
+        "img": "img.png",
+        "state": "err",
+        "build_at": "2025-01-01T00:00:00",
+        "duration": "3845"
+    }, 
+    {
+        "id" : 3,
+        "name": "c",
+        "event": "e3",
+        "commit": "789",
+        "img": "img.png",
+        "state": "ok",
+        "build_at": "2025-01-01T00:00:00",
+        "duration": "5"
+    }]
+}
