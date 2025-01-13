@@ -19,7 +19,7 @@ fn void main()
 
         Cache(<Token>) token = cache::new(<Token>)("token.json", &github::load, allocator);
         defer token.free(&Token.free);
-        // token.call_data(UpdateToken, &Token.update, "123secret456", { "a", "b" }, 60*60, datetime::now(), "fresh", 60*60*24);
+        token.call_data(UpdateToken, &Token.update, "123secret456", { "a", "b" }, 60*60, datetime::now(), "fresh", 60*60*24);
         // log::random("%s", token.data);
         token.save();
     };

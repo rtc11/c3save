@@ -50,7 +50,7 @@ fn Workflows load(String filename, Allocator allocator)
 
     log::random("loading %s", filename);
     if (content.len == 0) {
-        log::random("empty file, initializing");
+        log::random("%s is empty, initializing content", filename);
         return workflows;
     }
 

@@ -30,7 +30,7 @@ fn Token load(String filename, Allocator allocator = allocator::heap())
 
     log::random("loading %s", filename);
     if (content.len == 0) {
-        log::random("empty file, initializing");
+        log::random("%s was empty, initializing content", filename);
         return token;
     }
 
